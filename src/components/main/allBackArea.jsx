@@ -18,9 +18,15 @@ const AllBackArea = () => {
         setAddDelRequest(state);
     };
     const handleReportsList = (email) => {
-        const newArray = fakeRepList.filter((report) => report.email === email);
+        const newArray = fakeRepList.filter((report) =>
+            report.email.includes(email)
+        );
         setReportsList(newArray);
     };
+    // const handleReportsList = (email) => {
+    //     const newArray = fakeRepList.filter((report) => report.email === email);
+    //     setReportsList(newArray);
+    // };
     return (
         <>
             <div className="all-off-area">
@@ -35,7 +41,10 @@ const AllBackArea = () => {
                     handleReportsList={handleReportsList}
                     reportsList={reportsList}
                 />
-                <SearchPanel addNewTask={handleNewTask} />
+                <SearchPanel
+                    addNewTask={handleNewTask}
+                    handleReportsList={handleReportsList}
+                />
                 <Reports
                     handleDelRequest={handleDelRequest}
                     reportsList={reportsList}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import validator from "../../../services/validator";
 const fakeScannersList = [
     {
         label: "Поиск утечек информации и раскрытия служебных данных",
@@ -24,8 +25,18 @@ const fakeScannersList = [
 
 const AddTaskForm = ({ visibleAddTaskForm, closeAddTaskForm }) => {
     const [formData, setFormData] = useState("");
+    const [errors, setErrors] = useState();
     useEffect(() => {
-        console.log("formData", formData);
+        if (formData) {
+            console.log("formData", formData);
+        }
+
+        const errors = validator(
+            ["isRequired", "isWebAddress", "isTaskSelected"],
+            formData
+        );
+        setErrors(errors);
+        console.log("errors in AddFormData", errors);
     }, [formData]);
     const showAddTaskForm = {
         display: "block"
@@ -63,8 +74,10 @@ const AddTaskForm = ({ visibleAddTaskForm, closeAddTaskForm }) => {
         closeAddTaskForm();
     };
     const cancelSubmit = (event) => {
+        console.log("event.target cancel form ", event.target);
         event.preventDefault();
         setFormData("");
+        setErrors();
         clearForm(event.target);
         closeAddTaskForm();
     };
@@ -89,6 +102,17 @@ const AddTaskForm = ({ visibleAddTaskForm, closeAddTaskForm }) => {
                         name="url"
                         onChange={handleChange}
                     />
+                    {errors ? (
+                        errors.isRequired ? (
+                            <p className="error">{errors.isRequired}</p>
+                        ) : errors.isWebAddress ? (
+                            <p className="error">{errors.isWebAddress}</p>
+                        ) : (
+                            ""
+                        )
+                    ) : (
+                        ""
+                    )}
                     <div className="add-new-task-form-back-form-task-name">
                         Тип задачи
                     </div>
@@ -111,6 +135,15 @@ const AddTaskForm = ({ visibleAddTaskForm, closeAddTaskForm }) => {
                                 </label>
                             </div>
                         ))}
+                    {errors ? (
+                        errors.isTaskSelected ? (
+                            <p className="error">{errors.isTaskSelected}</p>
+                        ) : (
+                            ""
+                        )
+                    ) : (
+                        ""
+                    )}
 
                     <input
                         type="checkbox"
@@ -128,13 +161,20 @@ const AddTaskForm = ({ visibleAddTaskForm, closeAddTaskForm }) => {
                     <button
                         type="submit"
                         className="add-new-task-form-back-form-submit"
+                        disabled={
+                            errors
+                                ? !errors.statusValidate
+                                    ? "disabled"
+                                    : ""
+                                : ""
+                        }
                     >
                         Добавить
                     </button>
                     <button
-                        type="button"
+                        type="submit"
                         className="add-new-task-form-back-form-cancel"
-                        onClick={cancelSubmit}
+                        onSubmit={cancelSubmit}
                     >
                         Отмена
                     </button>
