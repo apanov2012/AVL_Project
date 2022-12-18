@@ -34,6 +34,7 @@ const validator = (validateMethod, data) => {
                 } else {
                     errors.isTaskSelected = "";
                 }
+                break;
             }
             default:
                 break;

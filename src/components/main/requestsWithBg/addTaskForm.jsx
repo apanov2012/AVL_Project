@@ -1,29 +1,38 @@
 import React, { useEffect, useState } from "react";
 import validator from "../../../services/validator";
-const fakeScannersList = [
-    {
-        label: "Поиск утечек информации и раскрытия служебных данных",
-        value: "Scannertype1"
-    },
-    {
-        label: "Поиск уязвимостей и векторов для проведения атак",
-        value: "Scannertype2"
-    },
-    {
-        label: "Проведение расширенного исследования по всем направлениям",
-        value: "Scannertype3"
-    },
-    {
-        label: "Проверка использования нестойких паролей",
-        value: "Scannertype4"
-    },
-    {
-        label: "Поиск вирусов и стороннего кода",
-        value: "Scannertype5"
-    }
-];
+import translateTasks from "../../../services/translate.service";
+import listOfTasks from "../../../fake.api/response_taskList.json";
 
+// const fakeScannersList = [
+//     {
+//         label: "Поиск утечек информации и раскрытия служебных данных",
+//         value: "Scannertype1"
+//     },
+//     {
+//         label: "Поиск уязвимостей и векторов для проведения атак",
+//         value: "Scannertype2"
+//     },
+//     {
+//         label: "Проведение расширенного исследования по всем направлениям",
+//         value: "Scannertype3"
+//     },
+//     {
+//         label: "Проверка использования нестойких паролей",
+//         value: "Scannertype4"
+//     },
+//     {
+//         label: "Поиск вирусов и стороннего кода",
+//         value: "Scannertype5"
+//     }
+// ];
 const AddTaskForm = ({ visibleAddTaskForm, closeAddTaskForm }) => {
+    const [tasksList, setTasksList] = useState();
+    useEffect(() => {
+        const initialTasks = JSON.parse(
+            JSON.stringify(listOfTasks.result.message)
+        );
+        setTasksList(translateTasks(initialTasks));
+    }, []);
     const [formData, setFormData] = useState("");
     const [errors, setErrors] = useState();
     useEffect(() => {
@@ -36,7 +45,7 @@ const AddTaskForm = ({ visibleAddTaskForm, closeAddTaskForm }) => {
             formData
         );
         setErrors(errors);
-        console.log("errors in AddFormData", errors);
+        // console.log("errors in AddFormData", errors);
     }, [formData]);
     const showAddTaskForm = {
         display: "block"
@@ -50,12 +59,13 @@ const AddTaskForm = ({ visibleAddTaskForm, closeAddTaskForm }) => {
             [target.name]: target.value
         }));
     };
-    const handleChangeCheckBox = ({ target }) => {
-        setFormData((prev) => ({
-            ...prev,
-            [target.name]: target.checked
-        }));
-    };
+    //OnControl disabled
+    // const handleChangeCheckBox = ({ target }) => {
+    //     setFormData((prev) => ({
+    //         ...prev,
+    //         [target.name]: target.checked
+    //     }));
+    // };
     const clearForm = (element) => {
         for (let i = 0; i < element.length; i++) {
             if (element[i].name === "url") {
@@ -116,22 +126,22 @@ const AddTaskForm = ({ visibleAddTaskForm, closeAddTaskForm }) => {
                     <div className="add-new-task-form-back-form-task-name">
                         Тип задачи
                     </div>
-                    {fakeScannersList &&
-                        fakeScannersList.map((scanType) => (
-                            <div key={scanType.value}>
+                    {tasksList &&
+                        tasksList.map((scanType) => (
+                            <div key={scanType.action}>
                                 <input
                                     type="radio"
                                     name="addTask"
                                     className="add-new-task-form-back-form-checkbox"
-                                    id={scanType.value}
+                                    id={scanType.title}
                                     onChange={handleChange}
-                                    value={scanType.value}
+                                    value={scanType.action}
                                 />
                                 <label
-                                    htmlFor={scanType.value}
+                                    htmlFor={scanType.title}
                                     className="add-new-task-form-back-form-label"
                                 >
-                                    {scanType.label}
+                                    {scanType.desc}
                                 </label>
                             </div>
                         ))}
@@ -145,7 +155,7 @@ const AddTaskForm = ({ visibleAddTaskForm, closeAddTaskForm }) => {
                         ""
                     )}
 
-                    <input
+                    {/* <input
                         type="checkbox"
                         className="add-new-task-form-back-form-checkbox-square"
                         id="onControl"
@@ -157,7 +167,7 @@ const AddTaskForm = ({ visibleAddTaskForm, closeAddTaskForm }) => {
                         className="add-new-task-form-back-form-label-square"
                     >
                         На контроль
-                    </label>
+                    </label> */}
                     <button
                         type="submit"
                         className="add-new-task-form-back-form-submit"

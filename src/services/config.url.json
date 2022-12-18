@@ -1,0 +1,31 @@
+{
+    "endPoint": {
+        "apiTestEndpoint": "https://app.wb.avl.team/ext/webbez/",
+        "apiProdEndpoint": "https://scanner.avl4.avl.team/ext/webbez/",
+        "apiCurrentEndpoint": "https://web.avl.team/ext/webbez/"
+    },
+    "authority": {
+        "authorityTest": "app.wb.avl.team",
+        "authorityProd": "scanner.avl4.avl.team",
+        "authorityCurrent": "web.avl.team"
+    },
+    "id": "633a8bb1b6920d0f94a4969f",
+    "headersTest": {
+        "authority": "app.wb.avl.team",
+        "accept": "application/json, text/plain, */*",
+        "accept-language": "en,ru;q=0.9,en-US;q=0.8,es;q=0.7",
+        "authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzEwMTAxMDAsImlhdCI6MTY3MDkyMzcwMCwibmJmIjoxNjcwOTIzNzAwLCJqdGkiOiIxMzViMDYwOC0zZDQ5LTQ2MTMtODZlYi0xYmZiYzBhMzBmZWEiLCJpZGVudGl0eSI6ImFkbWluIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsidWEiOiJNb3ppbGxhLzUuMCAoTWFjaW50b3NoOyBJbnRlbCBNYWMgT1MgWCAxMF8xNV83KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvMTA4LjAuMC4wIFNhZmFyaS81MzcuMzYiLCJpcCI6IjE3Mi4yNi4wLjEzIn19.x557u2eCTFqS65sMnyDoYiWeoSuwd2TWFgQWFZ5Vs7k",
+        "content-type": "application/json",
+        "x-avl": "avl",
+        "x-avl-project": "5b44bec321e80000100b37d8"
+    },
+    "headersProd": {
+        "authority": "scanner.avl4.avl.team",
+        "accept": "application/json, text/plain, */*",
+        "accept-language": "en,ru;q=0.9,en-US;q=0.8,es;q=0.7",
+        "authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzEwMTAxMDAsImlhdCI6MTY3MDkyMzcwMCwibmJmIjoxNjcwOTIzNzAwLCJqdGkiOiIxMzViMDYwOC0zZDQ5LTQ2MTMtODZlYi0xYmZiYzBhMzBmZWEiLCJpZGVudGl0eSI6ImFkbWluIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsidWEiOiJNb3ppbGxhLzUuMCAoTWFjaW50b3NoOyBJbnRlbCBNYWMgT1MgWCAxMF8xNV83KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvMTA4LjAuMC4wIFNhZmFyaS81MzcuMzYiLCJpcCI6IjE3Mi4yNi4wLjEzIn19.x557u2eCTFqS65sMnyDoYiWeoSuwd2TWFgQWFZ5Vs7k",
+        "content-type": "application/json",
+        "x-avl": "avl",
+        "x-avl-project": "5b44bec321e80000100b37d8"
+    }
+}

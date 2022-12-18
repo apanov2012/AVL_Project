@@ -3,15 +3,14 @@ import ScannerLink from "./scannerLink";
 
 const ScannerLinkList = ({ handleReportsList, reportsList }) => {
     const [filteredList, setfilteredList] = useState();
-    const handleFilter = (email) => {
-        handleReportsList(email);
-        // console.log(reportsList.filter((report) => report.email === email));
+    const handleFilter = (url) => {
+        handleReportsList(url);
     };
+    const regExpWww = /[w][w][w]\.(.*)/;
+    const regExpHttp = /https:\/\/www\.(.*)$/;
     useEffect(() => {
         const tempList = reportsList.reduce((filteredArr, tempReport) => {
-            if (
-                !filteredArr.find((report) => report.email === tempReport.email)
-            ) {
+            if (!filteredArr.find((report) => report.url === tempReport.url)) {
                 filteredArr.push(tempReport);
             }
             return filteredArr;
@@ -19,15 +18,13 @@ const ScannerLinkList = ({ handleReportsList, reportsList }) => {
         setfilteredList(tempList);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    // console.log("filteredList in ScannerLinkList", filteredList);
     return (
         <>
             <div className="scanner-links-list">
                 {filteredList
                     ? filteredList.map((report) => (
                           <ScannerLink
-                              email={report.email}
+                              email={report.url.split(regExpHttp)}
                               key={report.id}
                               handleFilter={handleFilter}
                           />

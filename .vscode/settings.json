@@ -1,4 +1,5 @@
 {
     "typescript.preferences.quoteStyle": "double",
-    "javascript.preferences.quoteStyle": "double"
+    "javascript.preferences.quoteStyle": "double",
+    "editor.maxTokenizationLineLength": 20000000
 }

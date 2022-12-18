@@ -1,0 +1,34 @@
+{
+    "status": 200,
+    "reason": "OK",
+    "result": {
+        "status": "success",
+        "message": [
+            {
+                "action": "raskrytie-dannyh",
+                "desc": "Search for information leaks and disclosure of service data",
+                "title": "raskrytie-dannyh"
+            },
+            {
+                "action": "uyazvimye-napravleniya",
+                "desc": "Search for vulnerabilities and vectors for attacks",
+                "title": "uyazvimye-napravleniya"
+            },
+            {
+                "action": "polnoe-issledovanie",
+                "desc": "Conducting an expanded study in all areas",
+                "title": "polnoe-issledovanie"
+            },
+            {
+                "action": "pop3-analiz",
+                "desc": "Checking the use of unstable passwords",
+                "title": "pop3-analiz"
+            },
+            {
+                "action": "malware",
+                "desc": "Scan for viruses and third-party code",
+                "title": "malware"
+            }
+        ]
+    }
+}

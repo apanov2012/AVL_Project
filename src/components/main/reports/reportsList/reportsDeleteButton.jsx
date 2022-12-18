@@ -14,7 +14,8 @@ const ReportsDeleteButton = ({
     };
     const createDelRequest = () => {
         handleDelButDisplay(false);
-        if (Object.keys(reportsFormData).length > 0) {
+        if (reportsFormData !== undefined) {
+            console.log(reportsFormData);
             handleDelRequest(true);
         }
     };

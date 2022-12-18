@@ -141,7 +141,8 @@ html {
 }
 .scanner-name, /* внутренние элементы топ-элемента блока для ссылок*/
 .scanner-on-control,
-.scanner-url {
+.scanner-url,
+.scanner-clear-filter {
     /* border: 1px solid black; */
     height: 30px;
     padding-top: 5px;
@@ -154,6 +155,15 @@ html {
 .scanner-on-control {
     /* элемент топ-блока сканера с часами и ссылкой*/
     display: flex;
+}
+.scanner-clear-filter {
+    background-image: url("../img/ClearFilter.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 5px;
+    opacity: 0.7;
+    width: 25px;
+    cursor: pointer;
 }
 .scanner-on-control-clock {
     /*вложенный блок с часами*/

@@ -7,7 +7,7 @@ const Scanner = ({ handleReportsList, reportsList }) => {
     return (
         <>
             <div className="scanner">
-                <ScannerTop />
+                <ScannerTop handleReportsList={handleReportsList} />
                 <ScannerLinkList
                     reportsList={reportsList}
                     handleReportsList={handleReportsList}
